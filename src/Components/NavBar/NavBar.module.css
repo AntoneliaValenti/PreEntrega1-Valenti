@@ -1,0 +1,26 @@
+.titulo{
+    color: rgb(44, 185, 143);
+    
+
+}
+.lista{
+    list-style-type: none;
+    color: rgb(44, 185, 143);
+
+}
+
+.lista1{
+    list-style: none;
+    
+    color: rgb(255, 255, 255);
+    background-color: rgb(44, 185, 143);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    
+}
+.lista1:hover {
+    background-color: #93ffbc;
+    color: black;
+}
+
