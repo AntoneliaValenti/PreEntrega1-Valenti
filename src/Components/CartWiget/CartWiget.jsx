@@ -4,7 +4,7 @@ const CartWiget = () =>{
     return (
         <div className={estilos.carrito}>  
             <img className={estilos.img} src={cart} alt="cart-wiget"/>
-            0
+            <p>0</p>
         </div>
 )}
 export default CartWiget
