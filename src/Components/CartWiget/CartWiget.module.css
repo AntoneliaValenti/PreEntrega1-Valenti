@@ -1,0 +1,22 @@
+.img{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(44, 185, 143);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.carrito{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+}

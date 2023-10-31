@@ -7,10 +7,13 @@ import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 function App() {
   return (
     <div className="App">
+    <header className="header">
       <NavBar />
       <CartWiget />
+    </header>
       <ItemListContainer greeting ={"Bienvenidos!"}/>
     </div>
+    
   );
 }
 
