@@ -21,13 +21,14 @@
 
 }
 .lista{
-    width: 200px;
+    color:antiquewhite;
+    width: 300px;
     height: auto;
     list-style-type: none;
     display: Flex;
     flex-direction: row;
     justify-content: right;
-    margin-left: 750px;
+    margin-left: 700px;
     margin-top: 30px;
 }
 

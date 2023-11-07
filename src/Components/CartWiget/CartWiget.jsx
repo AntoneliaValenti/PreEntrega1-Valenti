@@ -1,5 +1,6 @@
 import estilos from "./CartWiget.module.css";
 import cart from './assets/cart.webp'
+
 const CartWiget = () =>{
     return (
         <div className={estilos.carrito}>  
@@ -7,4 +8,4 @@ const CartWiget = () =>{
             <p>0</p>
         </div>
 )}
-export default CartWiget
+export default CartWiget;
