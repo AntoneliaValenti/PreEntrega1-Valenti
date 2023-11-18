@@ -1,6 +1,6 @@
 import estilos from './ItemListContainer.module.css';
 import { useState, useEffect } from 'react';
-import { getProducts } from '../../asyncMock';
+import { getProducts } from '../AsyncMock.jsx/AsyncMock';
 import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = ({ greeting }) => {

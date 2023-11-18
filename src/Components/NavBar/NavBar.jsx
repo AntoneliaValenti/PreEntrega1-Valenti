@@ -11,7 +11,7 @@ const NavBar = () => {
                 <ul className={estilos.lista}>
                     <li className={estilos.lista1}><a href="/Dulces">Dulces</a></li>
                     <li className={estilos.lista1}><a href="/Salados">Salados</a></li>
-                    <li className={estilos.lista1}><a href="/Sin Tacc">Sin Tacc</a></li>
+                    <li className={estilos.lista1}><a href="/Tacc Off">Tacc Off</a></li>
                 </ul>
             </div>
             <div>

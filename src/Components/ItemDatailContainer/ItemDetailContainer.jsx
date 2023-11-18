@@ -1,6 +1,6 @@
 import estilos from './ItemDetailContainer.module.css';
 import { useState, useEffect } from 'react';
-import { getProductById } from '../../asyncMock';
+import { getProductById } from '../AsyncMock.jsx/AsyncMock';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 const ItemDetailContainer = () => {

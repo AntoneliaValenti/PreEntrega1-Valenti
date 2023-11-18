@@ -18,7 +18,7 @@ const ItemCount = ({stock, initial, onAdd})=> {
 
     return(
         <div className='Counter'>
-            <div className='Controls'>
+            <div className={estilos.Controls}>
                 <button className='Button' onClick={Decrement}>-</button>
                 <h4 className='Number'>{quantity}</h4>
                 <button className='Button' onClick={Increment}>+</button>
