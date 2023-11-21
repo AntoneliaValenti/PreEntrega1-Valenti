@@ -13,7 +13,7 @@ const products =[
         id: '1',
         name: 'torta de coco',
         price: 1000,
-        category: 'dulce',
+        category: 'dulces',
         img: cart1,
         stock: 10,
         description: 'Descripcion Torta de coco'
@@ -22,7 +22,7 @@ const products =[
         id: '2',
         name: 'torta de chocolate',
         price: 1000,
-        category: 'dulce',
+        category: 'dulces',
         img: cart2,
         stock: 10,
         description: 'Descripcion Torta de chocolate' 
@@ -31,7 +31,7 @@ const products =[
         id: '3',
         name: 'Rogel',
         price: 1000,
-        category: 'dulce',
+        category: 'dulces',
         img: cart3,
         stock: 10,
         description: 'Descripcion Rogel'
@@ -40,16 +40,16 @@ const products =[
         id: '4',
         name: 'Sandwich Capresse',
         price: 1000,
-        category: 'salado',
+        category: 'salados',
         img: cart4,
         stock: 10,
         description: 'Descripcion Sandwich capresse'
     },
     {
         id: '5',
-        name: 'Sandwich jamon crudo y mermelada',
+        name: 'Sandwich Crudo y Mermelada',
         price: 1000,
-        category: 'salado',
+        category: 'salados',
         img: cart5,
         stock: 10,
         description: 'Descripcion Sandwich jamon crudo  y m'
@@ -58,14 +58,14 @@ const products =[
         id: '6',
         name: 'Sandwich salmon',
         price: 1000,
-        category: 'salado',
+        category: 'salados',
         img: cart6,
         stock: 10,
         description: 'Descripcion sand salmon'
     },
     {
         id: '7',
-        name: 'Sandwich jamon crudo taccOff',
+        name: 'Sandwich Crudo TaccOff',
         price: 1000,
         category: 'taccoff',
         img: cart7,
@@ -108,10 +108,10 @@ export const getProductById = (productId) => {
     });
 };
 
-export const getProductsByCategory = (getProductsByCategory) => {
+export const getProductsByCategory = (category) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(products.find(prod =>prod.id === getProductsByCategory))
+            resolve(products.filter(prod =>prod.category === category))
         }, 300);
     });
 };

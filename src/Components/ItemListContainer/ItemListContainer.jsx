@@ -11,10 +11,11 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {
         const asyncFunc = categoryId ? getProductsByCategory : getProducts
-
+        
         asyncFunc(categoryId)
             .then(response => {
                 setProducts(response)
+                console.log(response)
             })
         .catch(error => {
             console.error(error)
@@ -22,10 +23,11 @@ const ItemListContainer = ({ greeting }) => {
     }, [categoryId])
 
     return (
-        <div className={estilos.saludo}>
+        <div className={estilos.CardP}>
             <h1>{greeting}</h1>
-            <ItemList products={products}/>
+            <ItemList  products={products}/>
         </div>
     );
 };
+
 export default ItemListContainer;

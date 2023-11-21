@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: black;
 }
 
 .titulo{
@@ -20,19 +21,19 @@
     margin-left: 20px;
 
 }
-.lista{
+.Categories{
+    background-color: black;
     color:antiquewhite;
     width: 300px;
     height: auto;
     list-style-type: none;
     display: Flex;
     flex-direction: row;
-    justify-content: right;
-    margin-left: 700px;
+    justify-content: space-between;   margin-left: 700px;
     margin-top: 30px;
 }
 
-.lista1{
+.isActive{
     color: rgb(255, 255, 255);
     background-color: rgb(44, 185, 143);
     padding: 7px;

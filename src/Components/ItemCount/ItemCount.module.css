@@ -1,3 +1,23 @@
 .Controls{
-    background-color: brown;
+    background-color: rgb(44, 185, 143);
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.Button2{
+    height: 50px;
+    width: auto;
+    margin: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    background-color: black;
+    color: antiquewhite;
 }
