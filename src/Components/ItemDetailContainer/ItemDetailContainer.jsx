@@ -1,29 +1,33 @@
-import estilos from './ItemDetailContainer.module.css';
-import { useState, useEffect } from 'react';
-import { getProductById } from '../../AsyncMock';
-import ItemDetail from '../ItemDetail/ItemDetail';
-import { useParams } from 'react-router-dom';
+import estilos from './ItemDetailContainer.module.css'
+import { useState, useEffect } from 'react'
+import ItemDetail from '../ItemDetail/ItemDetail'
+import { useParams } from 'react-router-dom'
+import { getDoc, doc } from 'firebase/firestore'
+import { db } from '../../firebase/clients' 
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
-    
+    const [loading, setLoading] = useState(true)
+
     const { itemId } = useParams()
 
     useEffect(() => {
-        getProductById(itemId)
-        .then(response => {
-            setProduct(response)
+        setLoading(true)
+
+        const docRef = doc(db, 'products', itemId)
+       
+        getDoc(docRef)
+        .them(response => {
+            const data = response.data()
+            const productAdapted = { id: response.id, ...data}
+            setProduct(productAdapted)
         })
         .catch(error => {
-            console.error(error)
-        })      
-        }, [itemId]);
-
-    return(
-        <div className={estilos.ItemDetailContainer} >
-            <ItemDetail {...product} />
-        </div>
-    );
-};
-
+            console.log(error)
+        })
+        .finally(() => {
+            setLoading(false)
+        })
+    }, [itemId])    
+}
 export default ItemDetailContainer
