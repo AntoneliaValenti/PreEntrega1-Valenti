@@ -12,6 +12,8 @@ const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams()
 
     useEffect(() => {
+        setLoading(true)
+
         const collectionRef = categoryId
             ? query(collection(db, 'products'), where('category', '==', categoryId))
             : collection(db, 'products')
@@ -19,7 +21,7 @@ const ItemListContainer = ({ greeting }) => {
         getDocs(collectionRef)
             .then(response => {
                 const productsAdapted = response.docs.map(doc => {
-                    const data = doc.data ()
+                    const data = doc.data()
                     return { id: doc.id, ...data}
                 })
                 setProducts(productsAdapted)

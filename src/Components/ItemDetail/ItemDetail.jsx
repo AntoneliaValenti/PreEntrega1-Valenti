@@ -1,19 +1,30 @@
 import estilos from './ItemDetail.module.css'
 import ItemCount from '../ItemCount/ItemCount'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContex'
 
-const ItemDetail = ({ id, name, price, img, category, description, stock}) => {
+const ItemDetail = ({ id, nombre, precio, img, category, description, stock}) => {
    const [quantityAdded, setQuantityAdded] = useState(0)
 
    const { addItem } = useContext(CartContext)
-   
+
+   const [loading, setLoading] = useState(true); 
+
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
    const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity)
         
         const item = {
-            id, name, price
+            id, nombre, precio, img
         }
         
         addItem(item, quantity)
@@ -23,11 +34,11 @@ const ItemDetail = ({ id, name, price, img, category, description, stock}) => {
         <article className={estilos.CardItem}>
             <header className={estilos.Header}>
                 <h2 className={estilos.ItemHeader}>
-                    {name}
+                    {nombre}
                 </h2>
             </header>
             <picture>
-                <img src= {img} alt={name} className={estilos.ItemImg} />
+                <img src= {img} alt={nombre} className={estilos.ItemImg} />
             </picture>
             <section>
                 <p className={estilos.Info}>
@@ -37,7 +48,7 @@ const ItemDetail = ({ id, name, price, img, category, description, stock}) => {
                     Descripción: {description}
                 </p>
                 <p className={estilos.Info}>
-                    Precio: ${price}
+                    Precio: ${precio}
                 </p>
             </section>
             <footer className={estilos.ItemFooter}>
@@ -54,3 +65,4 @@ const ItemDetail = ({ id, name, price, img, category, description, stock}) => {
 }
 
 export default ItemDetail
+

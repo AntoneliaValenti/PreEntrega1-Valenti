@@ -2,21 +2,21 @@ import estilos from './Item.module.css';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-const Item = ({id, name, img, price, stock}) => {
+const Item = ({id, nombre, img, precio, stock}) => {
 
 return(
         <article className={estilos.CardItem}>
             <header className={estilos.Header}>
                 <h2 className={estilos.ItemHeader}>
-                    {name}
                 </h2>
+                    {nombre}
             </header>
             <picture>
-                <img src={img} alt={name} className={estilos.ItemImg} />
+                <img src={img} alt={nombre} className={estilos.ItemImg} />
             </picture>
             <section>
                 <p className={estilos.Info}>
-                    Precio: ${price}
+                    Precio: ${precio}
                 </p>
                 <p className={estilos.Info}>
                     Stock disponible: {stock}
