@@ -9,7 +9,7 @@ const ItemDetail = ({ id, nombre, precio, img, category, description, stock}) =>
 
    const { addItem } = useContext(CartContext)
 
-   const [loading, setLoading] = useState(true); 
+   const [loading, setLoading] = useState(true)
 
    useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,7 +17,7 @@ const ItemDetail = ({ id, nombre, precio, img, category, description, stock}) =>
     }, 2000)
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [])
 
 
    const handleOnAdd = (quantity) => {
