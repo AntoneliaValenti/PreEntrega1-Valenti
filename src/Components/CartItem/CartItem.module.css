@@ -1,0 +1,18 @@
+.tarjeta{
+    background-color: rgb(44, 185, 143);;
+    color: black;
+    width: auto;
+    height: 250px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 50px;
+
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}

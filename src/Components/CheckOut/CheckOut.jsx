@@ -1,4 +1,4 @@
-//import estilos from './CheckOut.module.css'
+import estilos from './CheckOut.module.css'
 import { useContext, useState } from 'react';
 import { writeBatch, Timestamp, collection, getDocs, query, where, documentId, addDoc } from 'firebase/firestore';
 import { CartContext } from '../../Context/CartContex';
@@ -11,7 +11,7 @@ const CheckOut = () => {
 
     const { cart, total, clearCart } = useContext(CartContext);
 
-    const createOrder = async (name, phone, email) => {
+    const createOrder  = async (name, phone, email) => {
         setLoading(true);
 
         try {
@@ -34,7 +34,7 @@ const CheckOut = () => {
             const productsRef = collection(db, 'products')
 
             const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
-
+           // console.log(productsAddedFromFirestore)
             const { docs } = productsAddedFromFirestore
 
             docs.forEach(doc => {
@@ -80,9 +80,9 @@ const CheckOut = () => {
     }
 
     return (
-        <div>
-            <h1>Checkout</h1>
-            <CheckoutForm onConfirm={createOrder} />
+        <div >
+            <h1>TERMINAR COMPRA!</h1>
+            <CheckoutForm className={estilos.term} onConfirm={createOrder} />
         </div>
     )
 }

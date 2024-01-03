@@ -25,6 +25,7 @@ const ItemListContainer = ({ greeting }) => {
                     return { id: doc.id, ...data}
                 })
                 setProducts(productsAdapted)
+                console.log(productsAdapted)
             })
         .catch(error => {
             console.error(error)
