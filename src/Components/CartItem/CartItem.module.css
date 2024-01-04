@@ -2,12 +2,13 @@
     background-color: rgb(44, 185, 143);;
     color: black;
     width: auto;
-    height: 250px;
+    height: 150px;
     border: 3px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin: 50px;
+    padding: 50px;
 
 }
 

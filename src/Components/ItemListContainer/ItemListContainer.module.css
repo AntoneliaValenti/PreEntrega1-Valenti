@@ -4,9 +4,9 @@
 }
 .CardP{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 50px;
+    flex-direction: column;
+    justify-content: left;
+    margin: 100px;
 }
 .CardItem{
     background-color: rgb(44, 185, 143);;

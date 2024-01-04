@@ -4,25 +4,31 @@ import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase/clients'
 
 const CheckoutForm = ({ onConfirm }) => {
+
   const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
+  const [telefono, setTelefono] = useState('')
   const [email, setEmail] = useState('')
   const [orderId, setOrderId] = useState(null)
 
   const handleConfirm = async (event) => {
-    event.preventDefault()
+    event.preventDefault() 
+    if (!name || !telefono || !email) {
+        console.error('Por favor, complete todos los campos obligatorios.');
+        return;
+      }
 
     const userData = {
       name,
-      phone,
+      telefono,
       email,
     }
 
-    const ordersCollection = collection(db, 'orders')
+    const orderCollection = collection(db, 'orden')
     try {
-      const docRef = await addDoc(ordersCollection, userData)
+      const docRef = await addDoc(orderCollection, userData)
 
-     onConfirm({ ...userData, orderId: docRef.id })
+     onConfirm(userData)
+
     } catch (error) {
       console.error('Error al crear la orden:', error)
     }
@@ -45,8 +51,8 @@ const CheckoutForm = ({ onConfirm }) => {
           <input
             className={estilos.Input}
             type="text"
-            value={phone}
-            onChange={({ target }) => setPhone(target.value)}
+            value={telefono}
+            onChange={({ target }) => setTelefono(target.value)}
           />
         </label>
         <label className={estilos.Label}>
@@ -68,7 +74,7 @@ const CheckoutForm = ({ onConfirm }) => {
         {orderId && (
             <div>
             <p>La orden se creó con éxito. ID de la orden: {orderId}</p>
-            {/* ...otros elementos de la página... */}
+            
             </div>
             )
         }

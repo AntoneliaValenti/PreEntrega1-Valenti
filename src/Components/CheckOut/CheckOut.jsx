@@ -1,40 +1,51 @@
 import estilos from './CheckOut.module.css'
-import { useContext, useState } from 'react';
-import { writeBatch, Timestamp, collection, getDocs, query, where, documentId, addDoc } from 'firebase/firestore';
-import { CartContext } from '../../Context/CartContex';
-import CheckoutForm from '../CheckoutForm/CheckoutForm';
-import { db } from '../../firebase/clients'; 
+import { useContext, useState } from 'react'
+import { writeBatch, Timestamp, collection, getDocs, query, where, documentId, addDoc } from 'firebase/firestore'
+import { CartContext } from '../../Context/CartContex'
+import CheckoutForm from '../CheckoutForm/CheckoutForm'
+import { db } from '../../firebase/clients'
 
 const CheckOut = () => {
-    const [loading, setLoading] = useState(false);
-    const [orderId, setOrderId] = useState('');
+    const [loading, setLoading] = useState(false)
+    const [orderId, setOrderId] = useState('')
 
-    const { cart, total, clearCart } = useContext(CartContext);
+    const { cart, clearCart } = useContext(CartContext)
 
-    const createOrder  = async (name, phone, email) => {
+    const onConfirm = async ({ name, telefono, email }) => {
+        console.log('Confirmación de usuario:', name, telefono, email)
+    }
+    
+
+    const createOrder  = async ({ name, telefono, email }) => {
+        console.log('Valores:', name, telefono, email)
         setLoading(true);
 
         try {
+            if (!name || !telefono || !email) {
+                console.error('Por favor, complete todos los campos obligatorios.')
+                return;
+            }
+            
             const objOrder = {
                 buyer: {
                     name,
-                    phone,
+                    telefono,
                     email
                 },
                 items: cart,
-                total: total,
                 date: Timestamp.fromDate(new Date())
             };
 
             const batch = writeBatch(db);
+
             const outOfStock = [];
 
             const ids = cart.map(prod => prod.id);
 
-            const productsRef = collection(db, 'products')
+            const productsRef = collection(db, 'pruducts')
 
             const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
-           // console.log(productsAddedFromFirestore)
+           
             const { docs } = productsAddedFromFirestore
 
             docs.forEach(doc => {
@@ -54,7 +65,7 @@ const CheckOut = () => {
             if (outOfStock.length === 0) {
                 await batch.commit()
 
-                const orderRef = collection(db, 'orders')
+                const orderRef = collection(db, 'orden')
 
                 const orderAdded = await addDoc(orderRef, objOrder)
 
@@ -63,6 +74,8 @@ const CheckOut = () => {
             } else {
                 console.error('Algunos productos están fuera de stock:')
             }
+
+            onConfirm( name, telefono, email )
 
         } catch (error) {
             console.error('Error al crear la orden:', error)
@@ -82,7 +95,7 @@ const CheckOut = () => {
     return (
         <div >
             <h1>TERMINAR COMPRA!</h1>
-            <CheckoutForm className={estilos.term} onConfirm={createOrder} />
+            <CheckoutForm className={estilos.term} onConfirm={ createOrder } />
         </div>
     )
 }

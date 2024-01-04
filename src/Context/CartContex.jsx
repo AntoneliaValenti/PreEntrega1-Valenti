@@ -5,7 +5,7 @@ export const CartContext = createContext({
   addItem: () => {},
   removeItem: () => {},
   clearCart: () => {},
-  totalQuantity: 0, // Agregamos totalQuantity al contexto
+  totalQuantity: 0, 
 });
 
 export const CartProvider = ({ children }) => {
